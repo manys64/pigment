@@ -1,6 +1,6 @@
 import React, {FormEvent} from 'react';
 import {Blank} from "./Blank";
-import {Login, User, UserRole} from "./login";
+import {Login, User, UserRole} from "./Login";
 import {adminMenu, componentsTable, Menu, menusTable} from "./Menu";
 
 type MasterState = {
@@ -33,13 +33,13 @@ export class Master extends React.Component<{}, MasterState> {
                 }
                 return response.json();
             })
-            .then((data) => {
+            .then((data: User) => {
                 this.setState((prevState) => ({
                     ...prevState,
                     logged: data
                 }))
                 if (typeof data === "object") {
-                    data.menu = menusTable[UserRole.ROLE_ADMIN]
+                    data.menu = menusTable[data.role]
                 }
             });
     }
@@ -66,13 +66,13 @@ export class Master extends React.Component<{}, MasterState> {
                     }
                     return response.json();
                 })
-                .then((data) => {
+                .then((data: User) => {
                     this.setState((prevState) => ({
                         ...prevState,
                         logged: data
                     }))
                     if (typeof data === "object") {
-                        data.menu = menusTable[UserRole.ROLE_ADMIN]
+                        data.menu = menusTable[data.role]
                     }
                 });
         }

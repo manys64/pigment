@@ -76,7 +76,14 @@ class Treatment extends React.Component<exampleTableProps, TreatmentState> {
             .then((data) => {
                 this.setState((prevState) => ({
                     ...prevState,
-                    data: data
+                    data: data,
+                    formData: {
+                        id: null,
+                        error: false,
+                        name: null,
+                        description: null,
+                        category: Category.DRUG
+                    }
                 }))
             });
     }

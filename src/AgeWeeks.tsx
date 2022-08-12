@@ -3,7 +3,7 @@ import {Treatments} from "./Treatment";
 import Select, {MultiValue} from "react-select";
 import "bootstrap"
 
-interface AgeWeeksInterface {
+export interface AgeWeeksInterface {
     id: number | null;
     weekOfLive: number | null;
     treatments: Array<Treatments>;
@@ -45,7 +45,6 @@ export class AgeWeeks extends React.Component<any, AgeWeeksState> {
 
     constructor(props: any) {
         super(props);
-        $("#addWeekGroup").modal('hide');
         this.sendData = this.sendData.bind(this);
         this.changeHandle = this.changeHandle.bind(this);
         this.removeDeleted = this.removeDeleted.bind(this);
@@ -85,7 +84,13 @@ export class AgeWeeks extends React.Component<any, AgeWeeksState> {
             .then((data) => {
                 this.setState((prevState) => ({
                     ...prevState,
-                    data: data
+                    data: data,
+                    formData: {
+                        id: null,
+                        error: false,
+                        weekOfLive: null,
+                        treatments: []
+                    }
                 }))
             });
     }

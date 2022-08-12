@@ -9,7 +9,8 @@ type LoginState = {
 }
 
 export enum UserRole {
-    ROLE_ADMIN = "ROLE_ADMIN"
+    ROLE_ADMIN = "ROLE_ADMIN",
+    ROLE_WORKER = "ROLE_WORKER"
 }
 
 export type User = {

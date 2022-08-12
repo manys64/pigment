@@ -2,6 +2,7 @@ import React from "react";
 import {Treatment} from "./Treatment";
 import {AgeWeeks} from "./AgeWeeks";
 import {Batches} from "./Batches";
+import { TreatmentPlan } from "./TreatmentPlan";
 
 type MenuTab = {
     name: string;
@@ -63,7 +64,7 @@ export const  workerMenu : MenuCreator = {
             name: "Narzędzia główne",
             tabs: [
                 {
-                    name: "Zabiegi",
+                    name: "Plan na dziś",
                     icon: "fa-table",
                     url: "/treatments",
                 }
@@ -79,18 +80,23 @@ export const  adminMenu : MenuCreator = {
             tabs: [
                 {
                     name: "Zabiegi",
-                    icon: "fa-table",
+                    icon: "fa-book-medical",
                     url: "/treatments",
                 },
                 {
                     name: "Grupy wiekowe",
-                    icon: "fa-table",
+                    icon: "fa-paw",
                     url: "/age-weeks",
                 },
                 {
-                    name: "Partie wiekowe",
-                    icon: "fa-table",
+                    name: "Grupy produkcyjne",
+                    icon: "fa-tractor",
                     url: "/batches",
+                },
+                {
+                    name: "Plan na dziś",
+                    icon: "fa-tasks",
+                    url: "/tasks"
                 }
             ]
         }
@@ -98,10 +104,12 @@ export const  adminMenu : MenuCreator = {
 }
 
 export const menusTable = {
-    "ROLE_ADMIN": adminMenu
+    "ROLE_ADMIN": adminMenu,
+    "ROLE_WORKER": workerMenu
 }
 
 export let componentsTable : any = {};
 componentsTable["Zabiegi"] = <Treatment/>;
-componentsTable["Partie wiekowe"] = <Batches/>;
+componentsTable["Grupy produkcyjne"] = <Batches/>;
+componentsTable["Plan na dziś"] = <TreatmentPlan/>;
 componentsTable["Grupy wiekowe"] = <AgeWeeks/>;
